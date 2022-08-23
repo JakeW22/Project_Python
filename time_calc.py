@@ -18,9 +18,6 @@ KEY: Cannot import any Python Libraries.
 The minutes in the duration time will be a whole number less than 60, but the hour can be any whole number.
 """
 
-from audioop import add
-
-
 def get_days_later(days):
   """ Helper function to format days later"""
   if days == 1:
@@ -96,7 +93,7 @@ def add_time(start, duration, day=False):
     remaining_mins = int(total_mins % 60)
 
     # Format the results 
-    results = f'{remaining_hours}:{remaining_mins:02} {period.upper()}'
+    results = f'{remaining_hours}:{remaining_mins} {period.upper()}'
     if day: # add day of the week
         day = day.strip().lower()
         selected_day = int((week_days.index(day) + days_later) % 7)
@@ -108,4 +105,5 @@ def add_time(start, duration, day=False):
 
     return results.strip()
 
-print(add_time("12:55 AM", "2:02"))
+print(add_time("12:55 PM", "2:02", day = "monday"))
+print(add_time("1:35 AM", "5:06", day = "thursday"))
